@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0; 
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:20px;
+    background-color: red;
+    width: fit-content;
+    padding: 20px;
+    align-items: center;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left:50%;
+    top: 50%;
+    border-radius: 10px;
+    input{
+        width: 200px;
+        height: 30px;
+        padding: 10px;
+        outline: none;
+    }
+    input:focus~label{
+        top:-18px;
+        /* background-color: antiquewhite; */
+    }
+    label{
+        position: absolute;
+        z-index: 1;
+        top:5px;
+        left: 5px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    
+    button{
+        padding: 5px 15px ;
+        border-radius: 50px;
+        border: none;
+        background:slateblue;
+        font-size: 1.2rem;
+    }
+}

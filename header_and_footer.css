@@ -1,0 +1,876 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* inputcommon property */
+
+input:focus{
+    border: 1px solid white;
+    color: white;
+}
+input{
+    outline:none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+}
+
+/* button common property */
+button{
+    border:none;
+    border-radius: 50px;
+    background-color: white;
+    font-size: .75rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* display hidden inputs  in header */
+
+input[name=menu]{
+    display: none;
+}
+
+/* header css */
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: whitesmoke;
+    position:fixed;
+    width: 100%;
+    top:0px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+    z-index: 999;
+    padding: 0 10px;
+}
+
+/* before content header fill background*/
+
+header::before{
+    content: "";
+    position:absolute;
+    width:100%;
+    height:101%;
+    left: 0;
+    transform-origin: top;
+    transform: scalex(0);
+    animation:scroll forwards ;
+    animation-timeline: view();
+    animation-range: exit 40vh;  
+}
+        /* animtion effect header fill background*/
+
+@keyframes scroll {
+    to{
+        transform: scalex(1);
+        background-color:rgb(0, 0, 0, 0.4);
+        -webkit-backdrop-filter:blur(5px) ;
+        backdrop-filter: blur(5px);   
+    }
+    99%,100%{
+        box-shadow: 0 2px 10px black, 0 2px 5px black ;
+    }
+}
+
+
+body:has(#menubar:checked) .menu{
+     top:0;
+}
+body:has(#menubar:checked) .menu-content ul li{
+    transition: transform 300ms 500ms linear;
+    transform: scaley(1);
+    transform-origin:bottom;
+}
+body:has(#menubar:checked) .menu .menu-images{
+    opacity: 1;
+    transform: translateY(0%);
+}
+body:has(#menubar_close:checked) .menu{
+    top:100%;
+}
+
+
+/* inside menu bar contents */
+
+
+/* menu bar */
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    width: 100%;
+    position: fixed;
+    left:0;
+    transition: all 500ms linear;
+}
+
+/* -------------menu bar close label css-------------- */
+
+.menu-content .menubar-close{
+    font-size: .75rem;
+    font-weight: bold;
+    position: relative;
+    width: fit-content;
+    padding-left:30px;
+}
+.menu-content .menubar-close:hover{
+    scale:1.4;
+    cursor: pointer;
+    transition: all 100ms linear;
+}
+.menu-content .menubar-close::before {
+    content: '';
+    height: 2px;
+    width: 30%;
+    position: absolute;
+    left: 0;
+    top:15%;
+    background-color: white;
+    transition: all 300ms linear;
+}
+.menu-content .menubar-close::after {
+    content: '';
+    height: 2px;
+    width: 15%;
+    position: absolute;
+    left: 0;
+    bottom:15%;
+    background-color: white;
+    transition: all 300ms linear;
+}
+
+.menu-content .menubar-close:hover::after{
+    width: 20%;
+    rotate: -45deg;
+    transform: translatex(42%);
+}
+.menu-content .menubar-close:hover::before{
+    width: 20%;
+    rotate: 40deg;
+    transform: translatex(42%);
+}
+
+/* content and list in menu bar */
+
+/* fisrt div is menu comtent */
+
+.menu .menu-content{
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+    background-color:#222;
+    transition: all 500ms linear;
+}
+
+/* ul inside menu css */
+
+.menu-content ul{
+    list-style: none;
+    width: fit-content;  
+}
+.menu-content ul:hover li{
+    color:grey;
+    transform: rotatez(-3deg) rotatex(0deg) rotateY(-5deg) translatez(90px)  
+    perspective(200px)!important;
+    transition-delay: 0s!important;
+}
+
+/* ul inside list css */
+
+.menu-content ul li{
+    width: fit-content;
+    font-size: 3rem;
+    font-weight:900;
+    line-height:3rem;
+    padding: 5px;
+    word-wrap:nowrap;
+    color: white;
+    transition:all 500ms;
+    position: relative;
+    transform: scaley(0);
+}
+.menu-content ul li:hover{
+    color: white!important;
+    cursor: pointer;
+    text-shadow: -5px -1px 1px #222, -6px -2px 2px gray,-5px 1px 1px #222, 0px 1px 2px gray;
+   transform: rotatey(0deg) rotateZ(-1deg) rotateX(0deg) translateZ(60px) perspective(100px);
+   padding-left: 45px;
+}
+.menu-content ul li:hover::first-letter{
+    color:rgb(150, 54, 239);
+    font-size: 4rem;
+}
+.menu-content ul li:nth-child(2):hover::first-letter{
+    color:rgb(31, 246, 196);
+}
+.menu-content ul li:nth-child(3):hover::first-letter{
+    color:rgb(227, 227, 43);
+}
+.menu-content ul li:nth-child(4):hover::first-letter{
+    color:rgb(248, 41, 200);
+}
+.menu-content ul li:nth-child(5):hover::first-letter{
+    color:rgb(55, 79, 215);
+}
+.menu-content ul li:nth-child(6):hover::first-letter{
+    color:rgb(218, 126, 14);
+}
+.menu-content ul li:nth-child(7):hover::first-letter{
+    color:rgb(255, 85, 0);
+}
+
+
+
+.menu-content ul li::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left:-15px;
+    top:35%;
+    transition: all 300ms;
+    transform: rotate(45deg);
+}
+
+
+/* -------------------rework-------------------- */
+
+.menu-content ul li:hover::after{
+    left:0%;
+    opacity: 1;
+    border-top:5px solid white;
+    border-right:5px solid white;
+    
+}
+
+
+/* menu span and i tag css */
+
+.menu-content  >span i , 
+.footeraside2 div:nth-child(2) >span i{
+    position: relative;
+    padding: 0 40px 0 0;
+    font-size: 1.5rem;
+    z-index: 1;
+} 
+
+.menu-content  >span i::after ,
+.footeraside2 div:nth-child(2) >span i::after{
+    position: absolute;
+    content: '';
+    width:40%;
+    height: 2px;
+    background-color: white;
+    left:50%;
+    top:40%;
+    transition:all .5s;
+} 
+
+.menu-content  >span i:hover::after , 
+.footeraside2 div:nth-child(2) >span i:hover::after{
+    width: 35px;
+    height:35px;
+    border-radius: 50%;
+    border:1px solid white;
+    /* background-color: transparent; */
+    left:-12%;
+    top:-25%;
+    background-color: white;
+    z-index: -1;
+}
+
+.menu-content >span i:nth-child(1):hover::after , 
+.footeraside2 div:nth-child(2) >span i:nth-child(1):hover::after{
+    left:-18%;
+    box-shadow: 2px 2px 15px blue,-2px -2px 15px blue;
+}
+
+.menu-content >span i:nth-child(2):hover::after , 
+.footeraside2 div:nth-child(2) >span i:nth-child(2):hover::after{
+   
+    box-shadow: 2px 2px 15px red,-2px -2px 15px orange;
+}
+
+.menu-content >span i:nth-child(3):hover::after , 
+.footeraside2 div:nth-child(2) >span i:nth-child(3):hover::after{
+    left:-8%;
+    box-shadow: 2px 2px 15px red,-2px -2px 15px red;
+}
+
+.menu-content >span i:nth-child(4):hover::after , 
+.footeraside2 div:nth-child(2) >span i:nth-child(4):hover::after{
+    left:-10%;
+    box-shadow: 2px 2px 15px rgb(214, 92, 92), -2px -2px 15px rgb(84, 214, 84);
+}
+
+.menu-content >span i:nth-child(1):hover , 
+.footeraside2 div:nth-child(2) >span i:nth-child(1):hover{
+    color:blue;
+}
+
+.menu-content >span i:nth-child(2):hover , 
+.footeraside2 div:nth-child(2) >span i:nth-child(2):hover{
+    color: orangered;
+}
+
+.menu-content >span i:nth-child(3):hover , 
+.footeraside2 div:nth-child(2) >span i:nth-child(3):hover{
+    color: red;
+}
+
+.menu-content >span i:nth-child(4):hover , 
+.footeraside2 div:nth-child(2) >span i:nth-child(4):hover{
+    color: black;
+}
+
+
+
+/* images in menu bar */
+
+/* second div is menu images */
+
+.menu .menu-images{
+    width:50%;
+    height:100%;
+    position: relative;
+    transform: translateY(-200%);
+    transition: all 500ms linear;
+    opacity: 0;
+}
+.menu-images img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition:all 1s;
+    filter: brightness(80%);
+    opacity: 0;
+}
+.menu-images img:nth-child(1){
+    /* z-index: 1;  */
+    opacity: 1;
+}
+
+body:has(.menu-content ul li:nth-last-child(7):hover) .menu-images img:nth-child(2){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(6):hover) .menu-images img:nth-child(3){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(5):hover) .menu-images img:nth-child(4){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(4):hover) .menu-images img:nth-child(5){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(3):hover) .menu-images img:nth-child(6){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(2):hover) .menu-images img:nth-child(7){
+    /* z-index: 2; */
+    opacity: 1;
+}
+body:has(.menu-content ul li:nth-last-child(1):hover) .menu-images img:nth-child(8){
+    /* z-index: 2; */
+    opacity: 1;
+}
+
+
+
+
+
+/*  label inside header to open menu css */
+
+.navigation-label{
+    cursor: pointer;
+}
+.navigation-label span{
+    position: relative;
+    display: inline-block;
+    padding: 30px 30px;
+    font-size: .75rem;
+    font-weight: bold;
+    vertical-align:bottom;
+    margin: 0 10px;
+    border-right: 1px solid rgb(134, 134, 134);
+}
+
+/* before and after in label open and !!!!--close--!!! */
+
+.navigation-label span::before {
+    content:'';
+    width:100%;
+    position: absolute;
+    left:10%;
+    top:42%;
+    transform: scaleX(15%);
+    transform-origin: left;
+    height:2px;
+    background-color:whitesmoke;
+    transition: all 1s ease;
+}
+
+.navigation-label span::after {
+    content:'';
+    width:100%;
+    position: absolute;
+    left:10%;
+    top:52%;
+    transform-origin: left;
+    transform: scaleX(9.5%);
+    height:2px;
+    background-color:whitesmoke;
+    transition: all 1s ease;
+}
+
+.navigation-label:hover span::before{
+    animation: menugrow .5s ease  forwards;
+    transform-origin: center;
+}
+.navigation-label:hover span::after{
+    animation: menugrow1 .5s ease forwards;
+    transform-origin: center;
+}
+@keyframes menugrow {
+    0%,100%{
+        top:30%;
+        border-top: 2px solid;
+        border-radius: 50px;
+    }
+    to{
+        left:-1%;
+        transform: scaleX(50%);
+    }
+}
+@keyframes menugrow1 {
+    0%,100%{
+        top:62%;
+        border-bottom: 2px solid;
+        border-radius: 50px;
+    }
+    to{
+        left:-1%;
+        transform:scaleX(50%);
+    }
+}
+
+/* navigation !(nav tag is used)! with logo inside header css  */
+
+nav{
+    width: 54%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+ }
+
+nav span a{
+    font-size: .75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+nav span a i{
+    padding: 5px;
+}
+nav span a::after{
+    content: 'MY ACCOUNT';
+}
+nav span button{
+    font-size: .75rem;
+    font-weight: 500;
+    margin: 0 20px;
+    padding: 15px 25px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+nav span button::after{
+    content: "US";
+}
+nav span button::before{
+    content: '';
+    width: 30px;
+    position: absolute;
+    height: 30px;
+    left: -100%;
+    top:-10%;
+    rotate:45deg;
+    border-radius: 50%;
+    background-color: blue;
+    border-top:20px solid rgba(255, 0, 0);
+    border-right:20px solid rgba(255, 0, 0);
+    z-index: -1;
+    transition:left 2s, opacity 2s ;
+    transform:scale(-1);
+}
+nav span button:hover::before{
+    left:100%;
+    transform:scale(1);
+    opacity: 0;
+}
+
+
+
+
+
+/* ------------------------------------footer starts-------------------------------- */
+
+footer{
+    background-color: #222;
+    padding:0 2rem;
+    color: white;
+}
+
+
+/* ----------------------footer aside1 starts in nested css-------------------------- */
+
+footer .footeraside1{
+    padding: 3rem 0;
+    border-bottom: 1px solid rgb(81, 81, 81);
+
+    h1{
+        width: 100%;
+
+        span{
+            font-size:3.2rem;
+            line-height: 3rem;
+            font-weight: 900;
+            display: block;
+            width: 100%!important;
+        }
+    }
+
+    button{
+        margin-top: 20px;
+        padding: 20px 35px;
+        font-size: .85rem;
+    }
+}
+
+/* ----------------------footer aside2 starts in nested css---------------------------- */
+
+footer .footeraside2{
+    padding: 3rem 0;
+    border-bottom: 1px solid rgb(77, 77, 77);
+
+   
+    div:nth-child(1){
+        display: flex;
+        flex-grow: 1;
+        gap:20px;
+        /* border: 1px solid; */
+
+        input{
+            width:36%;
+            height: 50px;
+            background-color: rgb(78, 78, 78);
+        }
+        p{
+            font-size:1.2rem;
+            font-weight: 800;
+            width: 300px;
+            padding-top: 8px;
+        }
+        span{
+            width:45%;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: space-between;
+
+            input{
+                width: 86%;
+                height: 50px;
+            }
+
+            button{
+                width: 50px;
+                height: 50px;
+                vertical-align: middle;
+                margin-left: 15px;
+                border-radius: 0;
+                border: 1px solid rgb(79, 79, 79);
+                background-color: transparent;
+                color:white;
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+            }
+            button::after{
+                content: '';
+                position: absolute;
+                width:100%;
+                height: 100%;
+                background-color: white;
+                top:0;
+                left:0;
+                z-index: -1;
+                transition: all 300ms ease-in;
+                transform: scaleX(0);
+                transform-origin: left;
+                
+             }
+             button:hover{
+                color:black;
+             }
+             button:hover::after{
+                transform: scaleX(1);
+                transform-origin:left;
+             }
+       
+         }
+
+    }
+}
+
+footer .footeraside2{
+
+    div:nth-child(2){
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        position: relative;
+
+        p{
+            width: 35%;
+            padding: 50px 0 0 0;
+
+            span{
+                display: block;
+                font-size: .9rem;
+                line-height: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
+        >span{
+            width:100%;
+            margin-top:40px;
+
+        }
+
+        img{
+            position: absolute;
+            right:0;
+            top:10px;
+            width: 100px;
+            margin-top:40px;
+        }
+    }
+}
+
+/* ----------------------footer aside3 starts in nested css-------------------------- */
+
+.footeraside3{
+    display: flex;
+    justify-content: space-between;
+    padding:0 0 40px 0;
+
+    p{
+        font-size: .75rem;
+        margin-top: 30px;
+    }
+    img{
+        width: 80px;
+        margin-top: 30px;
+    }
+}
+
+
+/*
+--------------------------------------------------------------------------------------------------------------------------responsive_quarry---------------------------------------------------------------------------------------------------------------------------- */ 
+
+/* responsive csss for small laptops 1020px starts */
+
+@media only screen and (max-width:1020px) {
+
+
+    /* respovsive header */
+
+    .menu{
+        flex-direction: column;
+    }
+    .menu .menu-content{
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgba(34, 34, 34,0.6);
+    }
+    .menu .menu-content ul{
+        margin: auto;
+        text-align: center;
+        /* width: 100%; */
+        margin-top: 50px;
+    }
+    .menu .menu-content ul li{
+        width: 100%;
+        font-size: 2.7rem;
+    }
+    .menu .menu-content span{
+        margin: auto;
+    }
+
+    .menu .menu-images{
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top:0;
+        left:0;
+    }
+    nav{
+        width:55%;
+    }
+
+
+    /* ----------------------------footer responsive------------------- */
+
+    .footeraside2 div:nth-child(1){
+        flex-wrap: wrap;
+    }
+    .footeraside2 div:nth-child(1) p{
+        width: 100%!important;
+    }
+
+    .footeraside2 div:nth-child(1) >input , 
+    .footeraside2 div:nth-child(1) span{
+            width: 48%!important;
+    }
+
+
+    footer .footeraside2 div:nth-child(2){
+
+        p{
+            width: 50%;
+
+            span{
+                width: 100%!important;
+            }
+        }
+    }
+    footer .footeraside2 div:nth-child(2)>span{
+        width: 100%!important;
+    }
+    footer .footeraside2 div:nth-child(2) img{
+
+        position: unset;
+    }
+}
+
+
+
+/* media quarry for tablet and 800px */
+
+@media only screen and (max-width:800px){
+
+
+    /* nav before after responsive */
+
+    nav span a::after{
+        content: '';
+    }
+    nav span button::after{
+        content: "";
+    }
+    nav span button{
+        margin: 0 0 0 10px;
+    }
+    nav{
+        width:57%;
+    }
+    .navigation-label span{
+        border: none;
+    }
+
+
+    /* ------------------------------------footer responsive css ------------------*/
+
+    .footeraside2 div:nth-child(1) >input,
+    .footeraside2 div:nth-child(1) span {
+        width:100%!important;
+    }
+
+    footer .footeraside2 div:nth-child(2){
+
+        p{
+            width: 100%;
+
+            span{
+                width: 100%!important;
+            }
+        }
+    }
+   
+    footer .footeraside3{
+        flex-direction: column;
+    }
+
+}
+
+
+
+/* media quarry for small devices and 530px  */
+
+
+@media only screen and (max-width:530px){
+
+    /* responsive header */
+
+    nav{
+        width:60%;
+    }
+
+    /* --------------------footer responsive--------------------- */
+
+    footer .footeraside1 h1 span{
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+    }
+
+}
+
+
+/* responsive for small mobile 460px */
+
+@media only screen and (max-width:460px){
+
+
+    /* responsive header */
+
+    .menu .menu-content{
+        padding:30px 20px;
+    }
+    .menu .menu-content ul li{
+        width: 100%;
+        font-size: 2rem;
+    }
+    .menu-content ul li:hover::first-letter{
+        font-size:2.3rem;
+    }
+  
+    nav span button{
+        display: none;
+    }
+    nav span a::after{
+        content: "ACCOUNT";
+    }
+    nav img{
+        width: 70px;
+    }
+    nav{
+        width:58%;
+    }
+}
