@@ -1,9 +1,21 @@
 @import url("https://fonts.cdnfonts.com/css/ica-rubrik-black");
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 @import url('https://fonts.cdnfonts.com/css/poppins');
-
+@font-face {
+    src: url("./custom-font/ABCGintoNordCondensed-Medium-Trial.otf");
+    font-family: "ABCGinto";
+    font-style: normal;
+    font-stretch: 1% 500%; 
+  }
+@font-face {
+    src: url("./custom-font/AeonikFonoTRIAL-Regular.otf");
+    font-family: "Aeo-fono";
+    font-style: normal;
+    font-stretch: 1% 500%; 
+  }
 
 :root{
+    --font-weight-m:500;
     --diameter:500px;
     --translate: translate(-50%,-50%);
     --translatex: translatex(-50%);
@@ -681,7 +693,7 @@ nav span button:hover::before{
     position: absolute;
     left:50%;
     transform: translateX(-50%);
-    bottom:30px;
+    bottom:10%;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -772,12 +784,21 @@ nav span button:hover::before{
     font-size: 1rem;
     padding:20px 0;
 }
+.section2 div h3{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left:7%;
+    width:max-content
+    /* align-items: flex-start; */
+}
 .section2 div:nth-child(1) span{
-    display: block;
-    font-family: "ICA Rubrik", sans-serif;
-    font-size: clamp(1em, 3vw, 3em);
-    line-height: 1.1em;
-    font-weight: 900;
+    font-family: "ABCGinto";
+    transform: scale(1.2,1.2);
+    /* letter-spacing: -0.05em; */
+    font-size: clamp(1em, 2.9vw, 2.9em);
+    line-height: 1.05em;
+    font-weight: 500;
 }
 
 
@@ -1106,14 +1127,22 @@ marquee span::before{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-.section6 .container .slider{
-    height: 45vh;
+    padding: 10px 40px;
 }
 .section6 .container .slider img{
     width: 100%;
     height: 100%;
 }
+.content .review{
+    padding-right: 20px;
+}
+.content .review h2{
+    font-size: clamp(1em, 3vw, 2.3em);
+    font-weight: 800;
+    font-stretch: 1000%;
+}
+
+
 /* ------------------------------------footer starts-------------------------------- */
 
 footer{
@@ -1375,8 +1404,11 @@ footer .footeraside2{
         width: 80%;
     }
     .section2 div:nth-child(1) span{
-        font-size: clamp(1em, 5vw, 3em);
+        font-size: clamp(1em, 3.2vw + 4px, 3em);
     }
+     .section2 div h3{
+        left:5%
+     }
 
 
     /* -------------------responsive small screen laptop section3-------------------- */
@@ -1586,9 +1618,12 @@ footer .footeraside2{
 
     /* responsive section 2 */
 
-    .section2 div:nth-child(1) span{
+    /* .section2 div:nth-child(1) span{
         font-size: 1.4em;
-    }
+    } */
+     .section2 div h3{
+        padding-left: 8px;
+     }
 
     /* responsive section 3 */
 
